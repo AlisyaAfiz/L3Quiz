@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, ScrollView, Text, Image, TextInput, Button, Alert} from 'react-native';
+import {View, ScrollView, Text, Image, TextInput, Button, Alert, StyleSheet} from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import Icon from "react-native-vector-icons/Ionicons";
 
@@ -11,6 +11,40 @@ const InputBox = ({label, onChangeText})=> {
       </View>
   );
 };
+
+const styles = StyleSheet.create({
+    logoQuiz: {
+        alignItems: 'center',
+        padding: 20,
+        backgroundColor: 'white',
+        borderWidth: 2,
+        borderColor: 'black'
+    },
+    question: {
+        flex: 1,
+        borderColor: 'black',
+        borderWidth: 2,
+        paddingLeft: 50,
+        paddingRight: 50,
+        backgroundColor: 'white',
+        marginBottom: 20
+    },
+    title: {
+        fontSize: 25,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        padding: 10,
+        color: 'teal'
+    },
+    theme: {
+        fontSize: 20,
+        fontStyle: 'italic',
+        textAlign: 'center',
+        color: 'white',
+        backgroundColor: 'teal',
+        padding: 5
+    }
+});
 
 const MyQuiz =() => {
     const [name, setName] = useState('');
@@ -31,21 +65,28 @@ const MyQuiz =() => {
     };
 
   return (
-      <View style={{ padding: 20, paddingTop: 50 }}>
-          <View style={{ alignItems: 'center', paddingBottom: 20 }}>
-        <Text style={{fontWeight: 'bold'}}>
-          <Icon name="logo-apple" size={40} color="blue">Logo Quiz
-              <Icon name="logo-facebook" size={40} color="blue"/>
+      <View style={{ padding: 20, marginTop: 40, marginBottom: 20, backgroundColor: 'lightgray' }}>
+          <View style={styles.logoQuiz}>
+        <Text style={{fontWeight: 'bold', marginBottom: 10}}>
+          <Icon name="logo-apple" size={40} color="teal">Logo Quiz
+              <Icon name="logo-facebook" size={40} color="teal"/>
           </Icon>
         </Text>
           </View>
 
+          <View style={{marginTop: 20}}>
         <InputBox label="User Name:" onChangeText={(text) => setName(text)}/>
         <Text>Hello, {name}</Text>
+      </View>
+
+          <Text style={{fontStyle: 'italic', fontSize: 20, textAlign: 'center', padding: 10}}>Guess the logo!</Text>
 
         <ScrollView contentContainerStyle={{paddingTop: 20, alignItems: 'center'}}>
-          <Text>Question 1</Text>
+
+            <View style={styles.question}>
+          <Text style={styles.title}>Question 1</Text>
           <Image source={require('./img/instagram.jpg')} style={{width:200, height:200}}/>
+                <Text style={styles.theme}>Theme: Social Media</Text>
             <RNPickerSelect
                 onValueChange={(value) => setQn1(value)}
                 items={[
@@ -54,9 +95,12 @@ const MyQuiz =() => {
                     { label: 'Tiktok', value: 'Wrong' }
                 ]}
             />
+            </View>
 
-          <Text>Question 2</Text>
+            <View style={styles.question}>
+          <Text style={styles.title}>Question 2</Text>
           <Image source={require('./img/volkswagen.jpg')} style={{width:200, height:200}}/>
+                <Text style={styles.theme}>Theme: Vehicles</Text>
             <RNPickerSelect
                 onValueChange={(value) => setQn2(value)}
                 items={[
@@ -65,9 +109,12 @@ const MyQuiz =() => {
                     { label: 'Porsche', value: 'Wrong' }
                 ]}
             />
+            </View>
 
-          <Text>Question 3</Text>
+            <View style={styles.question}>
+          <Text style={styles.title}>Question 3</Text>
       <Image source={require('./img/google.jpg')} style={{width:200, height:200}}/>
+                <Text style={styles.theme}>Theme: Search Engines</Text>
             <RNPickerSelect
                 onValueChange={(value) => setQn3(value)}
                 items={[
@@ -76,9 +123,12 @@ const MyQuiz =() => {
                     { label: 'Google', value: 'Correct' }
                 ]}
             />
-            <View style={{ paddingTop: 20, width: 400, height: 200}}>
+            </View>
+
+            <View style={{ width: 400, height: 200, marginBottom: 70, marginTop: 10 }}>
             <Button title="Submit" onPress={CountScore}/>
             </View>
+
         </ScrollView>
         </View>
   );
