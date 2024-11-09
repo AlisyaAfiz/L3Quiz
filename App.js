@@ -7,7 +7,7 @@ const InputBox = ({label, onChangeText})=> {
   return (
       <View>
         <Text>{label}</Text>
-        <TextInput style={{borderWidth: 1}} onChangeText={onChangeText} />
+        <TextInput style={{borderWidth: 2, borderColor: 'gray', backgroundColor: 'white'}} onChangeText={onChangeText} />
       </View>
   );
 };
@@ -18,16 +18,20 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: 'white',
         borderWidth: 2,
-        borderColor: 'black'
+        borderColor: 'gray',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        borderRadius: 10
     },
     question: {
         flex: 1,
-        borderColor: 'black',
+        borderColor: 'gray',
         borderWidth: 2,
         paddingLeft: 50,
         paddingRight: 50,
         backgroundColor: 'white',
-        marginBottom: 20
+        marginBottom: 20,
+        borderRadius: 10
     },
     title: {
         fontSize: 25,
@@ -67,11 +71,9 @@ const MyQuiz =() => {
   return (
       <View style={{ padding: 20, marginTop: 40, marginBottom: 20, backgroundColor: 'lightgray' }}>
           <View style={styles.logoQuiz}>
-        <Text style={{fontWeight: 'bold', marginBottom: 10}}>
-          <Icon name="logo-apple" size={40} color="teal">Logo Quiz
-              <Icon name="logo-facebook" size={40} color="teal"/>
-          </Icon>
-        </Text>
+              <Icon name="logo-apple" size={50} color="teal"/>
+              <Text style={{padding: 10, fontWeight: 'bold', color: 'teal', fontSize: 40}}>Logo Quiz</Text>
+              <Icon name="logo-facebook" size={50} color="teal"/>
           </View>
 
           <View style={{marginTop: 20}}>
@@ -91,8 +93,8 @@ const MyQuiz =() => {
                 onValueChange={(value) => setQn1(value)}
                 items={[
                     { label: 'Instagram', value: 'Correct' },
-                    { label: 'Facebook', value: 'Wrong' },
-                    { label: 'Tiktok', value: 'Wrong' }
+                    { label: 'Facebook', value: 'Wrong1' },
+                    { label: 'Tiktok', value: 'Wrong2' }
                 ]}
             />
             </View>
@@ -104,9 +106,9 @@ const MyQuiz =() => {
             <RNPickerSelect
                 onValueChange={(value) => setQn2(value)}
                 items={[
-                    { label: 'Toyota', value: 'Wrong' },
+                    { label: 'Toyota', value: 'Wrong1' },
                     { label: 'Volkswagen', value: 'Correct' },
-                    { label: 'Porsche', value: 'Wrong' }
+                    { label: 'Porsche', value: 'Wrong2' }
                 ]}
             />
             </View>
@@ -118,15 +120,15 @@ const MyQuiz =() => {
             <RNPickerSelect
                 onValueChange={(value) => setQn3(value)}
                 items={[
-                    { label: 'Yahoo', value: 'Wrong' },
-                    { label: 'Bing', value: 'Wrong' },
+                    { label: 'Yahoo', value: 'Wrong1' },
+                    { label: 'Bing', value: 'Wrong2' },
                     { label: 'Google', value: 'Correct' }
                 ]}
             />
             </View>
 
-            <View style={{ width: 400, height: 200, marginBottom: 70, marginTop: 10 }}>
-            <Button title="Submit" onPress={CountScore}/>
+            <View style={{ width: 400, height: 200, marginBottom: 80, marginTop: 10 }}>
+            <Button title="Submit" onPress={CountScore} color='teal'/>
             </View>
 
         </ScrollView>
