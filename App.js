@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderColor: 'gray',
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        justifyContent: 'space-evenly',
         borderRadius: 10
     },
     question: {
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
         backgroundColor: 'teal',
-        padding: 5
+        padding: 6
     }
 });
 
@@ -72,7 +72,7 @@ const MyQuiz =() => {
       <View style={{ padding: 20, marginTop: 40, marginBottom: 20, backgroundColor: 'lightgray' }}>
           <View style={styles.logoQuiz}>
               <Icon name="logo-apple" size={50} color="teal"/>
-              <Text style={{padding: 10, fontWeight: 'bold', color: 'teal', fontSize: 40}}>Logo Quiz</Text>
+              <Text style={{padding: 10, fontWeight: 'bold', color: 'teal', fontSize: 40}}>LOGO QUIZ</Text>
               <Icon name="logo-facebook" size={50} color="teal"/>
           </View>
 
